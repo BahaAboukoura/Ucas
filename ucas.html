@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>UCAS Calculator</title>
+    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+
+    <body>
+        <div id="app">
+
+            <h1> {{ title }} </h1>
+            <div id="left">
+                <grade :name= "pass"        ></grade>
+                <grade :name= "merit"       ></grade>
+                <grade :name= "distinction" ></grade>
+                <grade :name= "fail"        ></grade>
+            </div>
+
+            <div id="right">
+                <select id="pass" v-model="passNumber">
+                    <option v-for= "p in getNumbers(19)" :value="p">{{ p }}     </option>
+                </select>
+                
+                <select id="merit" v-model="meritNumber">
+                        <option v-for= "m in getNumbers(19)" :value="m">{{ m }} </option>
+                </select>
+                
+                <select id="distinction" v-model="distinctionNumber">
+                    <option v-for= "d in getNumbers(19)" :value="d">{{ d }}     </option>                    
+                </select>
+                
+                <select id="fail" v-model="failNumber">
+                    <option v-for= "f in getNumbers(19)" :value="f">{{ f }}    </option>
+                </select>
+            </div>
+
+            <div>
+                <p>pass {{ passNumber }}</p>
+                <p>merit {{ meritNumber }}</p>
+                <p>distinction {{ distinctionNumber }}</p>
+                <p>fail {{ failNumber }}</p>
+                <p v-html = "getTotal()"></p>
+                <p v-html = "evaluate()"></p>
+            </div>
+
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+        <script src="ucas.js"></script>
+    </body>
+</html>
